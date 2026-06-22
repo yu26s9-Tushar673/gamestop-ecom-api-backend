@@ -18,7 +18,6 @@ public class CategoryService
 
     public List<Category> getAllCategories()
     {
-        // get all categories
         return null;
     }
 
