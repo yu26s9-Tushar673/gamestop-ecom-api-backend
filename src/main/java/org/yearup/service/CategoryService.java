@@ -1,6 +1,7 @@
 package org.yearup.service;
 
 import org.springframework.stereotype.Service;
+import org.yearup.exception.ResourceNotFoundException;
 import org.yearup.models.Category;
 import org.yearup.repository.CategoryRepository;
 
@@ -18,29 +19,32 @@ public class CategoryService
 
     public List<Category> getAllCategories()
     {
-        return null;
+        return categoryRepository.findAll();
     }
 
     public Category getById(int categoryId)
     {
         // get category by id
-        return null;
+        return categoryRepository.findById(categoryId).orElseThrow(()-> new ResourceNotFoundException("Category Not Found: " + categoryId));
     }
 
     public Category create(Category category)
     {
-        // create a new category
-        return null;
+       return categoryRepository.save(category);
     }
 
-    public Category update(int categoryId, Category category)
+    public Category update(int categoryId, Category updatedCategory)
     {
-        // update category and return the updated category
-        return null;
+        return categoryRepository.findById(categoryId).map(existing -> {
+            existing.setCategoryId(updatedCategory.getCategoryId());
+            existing.setName(updatedCategory.getName());
+            existing.setDescription(updatedCategory.getDescription());
+            return categoryRepository.save(existing);
+        }).orElseThrow(() -> new ResourceNotFoundException("Category Not Found: " + categoryId));
     }
 
     public void delete(int categoryId)
     {
-        // delete category
+        categoryRepository.deleteById(categoryId);
     }
 }

@@ -8,10 +8,7 @@ public class ECommerceApplication
 {
 
     public static void main(String[] args) {
-        System.setProperty(
-                "spring.banner.location",
-                "classpath:banner-videogamestore.txt"
-        );
+        System.setProperty("spring.banner.location", "classpath:banner-videogamestore.txt");
         SpringApplication.run(ECommerceApplication.class, args);
     }
 }

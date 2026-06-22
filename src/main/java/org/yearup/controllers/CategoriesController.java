@@ -31,19 +31,19 @@ public class CategoriesController
         this.productService = productService;
     }
     // add the appropriate annotation for a get action
-    @GetMapping("")
-    public List<Category> getAll()
+    @GetMapping
+    public ResponseEntity<List<Category>> getAll()
     {
         // find and return all categories
-        return categoryService.getAllCategories();
+        return ResponseEntity.ok(categoryService.getAllCategories());
     }
 
     // add the appropriate annotation for a get action
-    @GetMapping("{id}")
-    public Category getById(@PathVariable int id)
+    @GetMapping("/{id}")
+    public ResponseEntity<Category> getById(@PathVariable int id)
     {
-        // get the category by id
-        return categoryService.getById(id);
+        Category found = categoryService.getById(id);
+        return ResponseEntity.ok().body(found);
     }
 
     // the url to return all products in category 1 would look like this

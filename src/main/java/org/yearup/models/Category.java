@@ -2,6 +2,8 @@ package org.yearup.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "categories")
 public class Category
