@@ -19,8 +19,11 @@ public class OrderLineItem {
     @Column(name = "sales_price")
     private double salesPrice;
 
+    @Column(name = "quantity")
+    private int quantity;
+
     @Column(name = "discount")
-    private int discount;
+    private double discount;
 
     public OrderLineItem()
     {
@@ -58,11 +61,19 @@ public class OrderLineItem {
         this.salesPrice = salesPrice;
     }
 
-    public int getDiscount() {
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(double discount) {
         this.discount = discount;
     }
 }

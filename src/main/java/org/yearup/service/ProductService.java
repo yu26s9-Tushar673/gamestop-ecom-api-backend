@@ -16,7 +16,6 @@ public class ProductService
         this.productRepository = productRepository;
     }
 
-
     public List<Product> search(Integer categoryId, Double minPrice, Double maxPrice, String subCategory)
     {
         List<Product> products = categoryId != null

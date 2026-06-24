@@ -28,6 +28,9 @@ public class Order {
     @Column(name = "state")
     private String state;
 
+    @Column(name = "zip")
+    private String zip;
+
     @Column(name = "shipping_amount")
     private double shippingAmount;
 
@@ -81,6 +84,14 @@ public class Order {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 
     public double getShippingAmount() {
