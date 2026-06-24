@@ -29,6 +29,10 @@ public class OrderService {
         ShoppingCart cart = shoppingCartService.getByUserId(userId);
         Profile profile = profileService.getByUserId(userId);
 
+        if (cart.getItems().isEmpty()){
+            throw new IllegalArgumentException("Cannot checkout an empty cart. Add item(s) to cart to checkout.");
+        }
+
         Order order = new Order();
         order.setUserId(userId);
         order.setDate(LocalDateTime.now());
