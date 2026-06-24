@@ -23,7 +23,7 @@ public class ProfileService
     public Profile getByUserId(int userId) {
         return profileRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User Not Found: " + userId));
     }
-    
+
     public Profile update(int userId, Profile updatedProfile) {
         updatedProfile.setUserId(userId);
         return profileRepository.save(updatedProfile);
