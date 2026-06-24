@@ -30,4 +30,13 @@ public class ProfileController {
 
         return profileService.getByUserId(userId);
     }
+
+    @PutMapping("")
+    public Profile updateProfile(@RequestBody Profile profile, Principal principal) {
+        String userName = principal.getName();
+        User user = userService.getByUserName(userName);
+        int userId = user.getId();;
+
+        return profileService.update(userId, profile);
+    }
 }
